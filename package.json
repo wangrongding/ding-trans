@@ -1,0 +1,18 @@
+{
+  "name": "ding-trans",
+  "version": "1.0.0",
+  "description": "a translation cli",
+  "main": "index.js",
+  "bin": {
+    "ding": "./bin/translate.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangrongding",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.0.1"
+  }
+}
