@@ -9,8 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "wangrongding",
-  "license": "ISC",
+  "author": "wangrongding <wangrongding@qq.com>",
+  "license": "MIT",
   "devDependencies": {
     "colors": "^1.4.0",
     "yargs": "^17.0.1"
