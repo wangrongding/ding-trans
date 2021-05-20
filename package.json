@@ -1,6 +1,6 @@
 {
   "name": "ding-trans",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "a translation cli",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
   },
   "author": "wangrongding <wangrongding@qq.com>",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "colors": "^1.4.0",
     "yargs": "^17.0.1"
   }
