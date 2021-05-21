@@ -7,7 +7,9 @@
 //3.使用http模块发送请求；
 //4.成功接收数据后，对数据进行格式化处理；
 
-let colors = require("colors");
+require("colors");
+// let colors = require("colors");
+// console.log("测试文本".bold.red);
 let argv = require("yargs").argv,
     queryStr = encodeURI(argv._.join(" ")),
     read = argv.r || argv.read;
@@ -32,11 +34,13 @@ function format(json) {
         mainTitle = "翻译：",
         mainTrans = "",
         webTitle = "网络释义：",
+        machineTrans = "",
         webTrans = "",
         template = "";
 
     let basic = data.basic,
-        web = data.web;
+        web = data.web,
+        translation = data.translation;
 
     if (basic ? basic : "") {
         for (let i = 0; i < basic.explains.length; i++) {
@@ -56,6 +60,7 @@ function format(json) {
         }
     }
 
+    translation ? (machineTrans = translation) : false;
     template =
         pronTitle.red.bold +
         pron +
@@ -64,7 +69,10 @@ function format(json) {
         mainTrans +
         "\n" +
         webTitle.blue.bold +
-        webTrans;
+        webTrans +
+        "\n" +
+        "机器翻译：".green.bold +
+        machineTrans;
 
     console.log(template);
 }
@@ -81,6 +89,7 @@ function sendInfo(query) {
             "/openapi.do?keyfrom=translation-tool&key=1730699468&type=data&doctype=json&version=1.1&q=" +
             query,
     };
+    // let options = ` http://aidemo.youdao.com/trans?q=${query}&&from=Auto&&to=Auto`;
 
     // 处理响应的回调函数
     let callback = function (response) {
@@ -91,7 +100,7 @@ function sendInfo(query) {
 
         response.on("end", function () {
             // 数据接收完成
-            console.log("\n");
+            // console.log("\n");
             console.log("---------------");
         });
     };

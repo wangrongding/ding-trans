@@ -8,12 +8,16 @@ npm i ding-trans -g
 
 ### 使用>
 
-```
+```shell
 ding hello
+#或者
+ding better late than never.
 ```
 
-![1621489715(1).jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqouh4l13sj20g6073749.jpg)
+![汪荣顶.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqouh4l13sj20g6073749.jpg)
 
-### 支持我
+![汪荣顶.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqqfqpfhnjj20ej05fmx4.jpg)
 
-See [荣顶](https://www.fedtop.com).
+### 想看更多好玩的东西?
+
+我的官方网站->See [荣顶:https://www.fedtop.com](https://www.fedtop.com).
