@@ -1,6 +1,6 @@
 {
   "name": "ding-trans",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "a translation cli",
   "main": "index.js",
   "bin": {
@@ -8,6 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangrongding/ding-trans.git"
   },
   "author": "wangrongding <wangrongding@qq.com>",
   "license": "MIT",
