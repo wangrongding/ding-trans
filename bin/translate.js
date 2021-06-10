@@ -12,31 +12,23 @@ require("colors");
 const say = require("say");
 const querystring = require("querystring");
 //=======================================================
-
 let argv = require("yargs").argv,
     queryStr = encodeURI(argv._.join(" ")),
     read = argv.r || argv.read;
-
 if (!queryStr) {
     console.log("word or sentence required...");
 } else {
-    // console.log(argv);
-    console.log("播放中...".green);
     if (argv.say == true || argv.S == true) {
+        console.log("播放中...".green);
         say.speak(querystring.unescape(queryStr));
         return;
     }
     sendInfo(queryStr);
 }
-
 if (read) {
     console.log("waiting for the new function...");
 }
-
 function format(json) {
-    // console.log("\n");
-    // console.log(JSON.parse(json), "\n");
-
     let data = JSON.parse(json),
         pronTitle = "发音：",
         pron = data.basic ? data.basic.phonetic : "无",
@@ -46,17 +38,14 @@ function format(json) {
         machineTrans = "",
         webTrans = "",
         template = "";
-
     let basic = data.basic,
         web = data.web,
         translation = data.translation;
-
     if (basic ? basic : "") {
         for (let i = 0; i < basic.explains.length; i++) {
             mainTrans += "\n" + basic.explains[i];
         }
     }
-
     if (web ? web : "") {
         for (let i = 0; i < web.length; i++) {
             webTrans +=
@@ -68,7 +57,6 @@ function format(json) {
                 web[i].value.join(",");
         }
     }
-
     translation ? (machineTrans = translation) : false;
     template =
         pronTitle.red.bold +
@@ -82,7 +70,6 @@ function format(json) {
         "\n" +
         "机器翻译：".green.bold +
         machineTrans;
-
     console.log(template);
 }
 
@@ -106,7 +93,6 @@ function sendInfo(query) {
         response.on("data", function (data) {
             format(data);
         });
-
         response.on("end", function () {
             // 数据接收完成
             // console.log("\n");
