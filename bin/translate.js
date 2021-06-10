@@ -8,8 +8,11 @@
 //4.成功接收数据后，对数据进行格式化处理；
 
 require("colors");
-// let colors = require("colors");
-// console.log("测试文本".bold.red);
+// automatically pick platform
+const say = require("say");
+const querystring = require("querystring");
+//=======================================================
+
 let argv = require("yargs").argv,
     queryStr = encodeURI(argv._.join(" ")),
     read = argv.r || argv.read;
@@ -17,6 +20,12 @@ let argv = require("yargs").argv,
 if (!queryStr) {
     console.log("word or sentence required...");
 } else {
+    // console.log(argv);
+    console.log("播放中...".green);
+    if (argv.say == true || argv.S == true) {
+        say.speak(querystring.unescape(queryStr));
+        return;
+    }
     sendInfo(queryStr);
 }
 

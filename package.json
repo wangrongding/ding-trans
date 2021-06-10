@@ -1,11 +1,10 @@
 {
   "name": "ding-trans",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "a translation cli",
   "main": "index.js",
   "bin": {
-    "ding": "./bin/translate.js",
-    "say": "./bin/say.js"
+    "ding": "./bin/translate.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
