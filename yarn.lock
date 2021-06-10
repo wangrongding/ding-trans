@@ -60,10 +60,22 @@ is-fullwidth-code-point@^3.0.0:
   resolved "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
 
+one-time@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/one-time/-/one-time-0.0.4.tgz#f8cdf77884826fe4dff93e3a9cc37b1e4480742e"
+  integrity sha1-+M33eISCb+Tf+T46nMN7HkSAdC4=
+
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
+
+say@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.npmjs.org/say/-/say-0.16.0.tgz#c9e0cfe9e5b2c9af4098eab4023027e4c0e2e6e0"
+  integrity sha512-yEfncNu3I6lcZ6RIrXgE9DqbrEmvV5uQQ8ReM14u/DodlvJYpveqNphO55RLMSj77b06ZKNif/FLmhzQxcuUXg==
+  dependencies:
+    one-time "0.0.4"
 
 string-width@^4.1.0, string-width@^4.2.0:
   version "4.2.2"
