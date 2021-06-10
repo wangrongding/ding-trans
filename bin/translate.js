@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 //业务逻辑
-//1.turnout命令+中英文[args,--read,-r]
+//1.ding命令+中英文[args,--say,-S]
 //捕获参数，使用yargs.argv对象；
 //2.将捕获到的用户的输入参数传入有道云api的q（key）中，使用字符串拼接；
 //3.使用http模块发送请求；
@@ -13,21 +13,33 @@ const say = require("say");
 const querystring = require("querystring");
 //=======================================================
 let argv = require("yargs").argv,
-    queryStr = encodeURI(argv._.join(" ")),
-    read = argv.r || argv.read;
-if (!queryStr) {
+    queryStr = encodeURI(argv._.join(" "));
+// read = argv.r || argv.read;
+// console.log(argv);
+// 无参数,或帮助
+if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
+    console.log("-------------------------------");
+    console.log("查单词: ".bold.blue);
+    console.log("ding [单词] 或者 [短句]", "\n");
+    console.log("汉译英: ".bold.red);
+    console.log("ding [文本]", "\n");
+    console.log("单词/短句发音: ".bold.yellow);
+    console.log("ding [单词] [短句] --say");
+    console.log("ding [单词] [短句] -S");
+    console.log("-------------------------------");
+    console.log("请在'ding'命令后输入单词或断句!");
     console.log("word or sentence required...");
 } else {
+    //播放
     if (argv.say == true || argv.S == true) {
         console.log("播放中...".green);
         say.speak(querystring.unescape(queryStr));
         return;
     }
+    //查词
     sendInfo(queryStr);
 }
-if (read) {
-    console.log("waiting for the new function...");
-}
+//格式化
 function format(json) {
     let data = JSON.parse(json),
         pronTitle = "发音：",
@@ -72,7 +84,7 @@ function format(json) {
         machineTrans;
     console.log(template);
 }
-
+//发送请求
 function sendInfo(query) {
     //发送翻译请求
     let http = require("http");
