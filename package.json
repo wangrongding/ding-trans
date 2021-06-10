@@ -4,7 +4,8 @@
   "description": "a translation cli",
   "main": "index.js",
   "bin": {
-    "ding": "./bin/translate.js"
+    "ding": "./bin/translate.js",
+    "say": "./bin/say.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
+    "say": "^0.16.0",
     "yargs": "^17.0.1"
   }
 }
