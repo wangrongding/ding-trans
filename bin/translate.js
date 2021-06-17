@@ -32,7 +32,7 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
 } else {
     //播放
     if (argv.say == true || argv.S == true) {
-        console.log("播放中...".green);
+        console.log("播放中...".rainbow);
         say.speak(querystring.unescape(queryStr));
         return;
     }
