@@ -1,21 +1,11 @@
 #! /usr/bin/env node
 
-//业务逻辑
-//1.ding命令+中英文[args,--say,-S]
-//捕获参数，使用yargs.argv对象；
-//2.将捕获到的用户的输入参数传入有道云api的q（key）中，使用字符串拼接；
-//3.使用http模块发送请求；
-//4.成功接收数据后，对数据进行格式化处理；
-
 require("colors");
-// automatically pick platform
 const say = require("say");
 const querystring = require("querystring");
-//=======================================================
-let argv = require("yargs").argv,
-    queryStr = encodeURI(argv._.join(" "));
-// read = argv.r || argv.read;
-// console.log(argv);
+const argv = require("yargs").argv;
+const queryStr = encodeURI(argv._.join(" "));
+
 // 无参数,或帮助
 if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     console.log("-------------------------------");
@@ -39,26 +29,23 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     //查词
     sendInfo(queryStr);
 }
+
 //格式化
 function format(json) {
     let data = JSON.parse(json),
-        pronTitle = "发音：",
         pron = data.basic ? data.basic.phonetic : "无",
-        mainTitle = "翻译：",
         mainTrans = "",
-        webTitle = "网络释义：",
-        machineTrans = "",
+        machineTrans = data.translation || "",
         webTrans = "",
-        template = "";
-    let basic = data.basic,
-        web = data.web,
-        translation = data.translation;
-    if (basic ? basic : "") {
+        template = "",
+        basic = data.basic,
+        web = data.web;
+    if (basic) {
         for (let i = 0; i < basic.explains.length; i++) {
             mainTrans += "\n" + basic.explains[i];
         }
     }
-    if (web ? web : "") {
+    if (web) {
         for (let i = 0; i < web.length; i++) {
             webTrans +=
                 "\n" +
@@ -69,21 +56,14 @@ function format(json) {
                 web[i].value.join(",");
         }
     }
-    translation ? (machineTrans = translation) : false;
-    template =
-        pronTitle.red.bold +
-        pron +
-        "\n" +
-        mainTitle.green.bold +
-        mainTrans +
-        "\n" +
-        webTitle.blue.bold +
-        webTrans +
-        "\n" +
-        "机器翻译：".green.bold +
-        machineTrans;
+    template = `${"发音：".red.bold}${pron}
+${"翻译：".green.bold}${mainTrans}
+${"网络释义：".blue.bold}${webTrans}
+${"机器翻译：".yellow.bold}${machineTrans}
+`;
     console.log(template);
 }
+
 //发送请求
 function sendInfo(query) {
     //发送翻译请求
