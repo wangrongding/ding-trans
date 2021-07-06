@@ -86,9 +86,7 @@ function sendInfo(query) {
             format(data);
         });
         response.on("end", function () {
-            // 数据接收完成
-            // console.log("\n");
-            console.log("---------------");
+            console.log("----------------ding-trans----------------");
         });
     };
     // 向服务端发送请求
