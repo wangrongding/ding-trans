@@ -41,9 +41,7 @@ function format(json) {
     basic = data.basic,
     web = data.web;
   if (basic) {
-    for (let i = 0; i < basic.explains.length; i++) {
-      mainTrans += "\n" + basic.explains[i];
-    }
+    mainTrans = "\n" + basic.explains.join("\n");
   }
   if (web) {
     for (let i = 0; i < web.length; i++) {
@@ -86,7 +84,7 @@ function sendInfo(query) {
       format(data);
     });
     response.on("end", function () {
-      console.log("----------------ding-trans----------------");
+      console.log("---------------- by 前端超人 ----------------");
     });
   };
   // 向服务端发送请求
