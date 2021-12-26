@@ -4,7 +4,7 @@ require("colors");
 const say = require("say");
 const querystring = require("querystring");
 const argv = require("yargs").argv;
-const queryStr = encodeURI(argv._.join(" "));
+let queryStr = encodeURI(argv._.join(" "));
 
 // 无参数,或帮助
 if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
@@ -26,6 +26,8 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     say.speak(querystring.unescape(queryStr));
     return;
   }
+  // 对驼峰的连续单词进行分割后转义
+  queryStr = encodeURI(queryStr.replace(/([A-Z])/g, " $1").toLowerCase());
   //查词
   sendInfo(queryStr);
 }
