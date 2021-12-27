@@ -1,6 +1,6 @@
 {
   "name": "ding-trans",
-  "version": "1.0.40",
+  "version": "1.0.42",
   "description": "a translation cli",
   "main": "index.js",
   "bin": {

@@ -1,11 +1,14 @@
 #! /usr/bin/env node
-
 require("colors");
 const say = require("say");
 const querystring = require("querystring");
 const argv = require("yargs").argv;
-let queryStr = encodeURI(argv._.join(" "));
-
+// 对驼峰的连续单词进行分割后转义
+let queryStr = encodeURI(
+  argv._.join(" ")
+    .replace(/([A-Z])/g, " $1")
+    .toLowerCase()
+);
 // 无参数,或帮助
 if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
   console.log("-------------------------------");
@@ -26,12 +29,9 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     say.speak(querystring.unescape(queryStr));
     return;
   }
-  // 对驼峰的连续单词进行分割后转义
-  queryStr = encodeURI(queryStr.replace(/([A-Z])/g, " $1").toLowerCase());
   //查词
   sendInfo(queryStr);
 }
-
 //格式化
 function format(json) {
   let data = JSON.parse(json),
@@ -63,12 +63,10 @@ ${"机器翻译: ".yellow.bold}${machineTrans}
 `;
   console.log(template);
 }
-
 //发送请求
 function sendInfo(query) {
   //发送翻译请求
   let http = require("http");
-
   // 1.用于请求的选项
   let options = {
     host: "fanyi.youdao.com",
@@ -78,7 +76,6 @@ function sendInfo(query) {
       query,
   };
   // let options = ` http://aidemo.youdao.com/trans?q=${query}&&from=Auto&&to=Auto`;
-
   // 处理响应的回调函数
   let callback = function (response) {
     // 不断更新数据
