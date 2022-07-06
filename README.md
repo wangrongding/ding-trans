@@ -8,6 +8,18 @@ npm i ding-trans -g
 
 ### 使用>
 
+#### new! 新增 deepl 翻译（英译中，吊打其他翻译，基于深度学习）
+
+```sh
+dd <content>
+# eg.
+dd hello world
+```
+
+![](https://assets.fedtop.com/picbed/20220706142743.png)
+
+![](https://assets.fedtop.com/picbed/20220706143047.png)
+
 ##### 查单词:
 
 ```shell

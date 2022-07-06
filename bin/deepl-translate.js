@@ -31,16 +31,19 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     return;
   }
   //查词
-  sendInfo(queryStr);
-  // console.log(queryStr);
+  sendInfo(querystring.unescape(queryStr));
 }
 //发送请求
-function sendInfo(query) {
+function sendInfo(queryStr) {
   axios
     .post("http://47.95.239.198:9521/translate", {
-      data: { text: query, source_lang: "auto", target_lang: "ZH" },
+      data: { text: queryStr, source_lang: "auto", target_lang: "ZH" },
     })
     .then((res) => {
-      console.log(`${"翻译: ".green.bold}${res.data}`);
+      console.log(`=============================================== \n`.rainbow);
+      console.log(
+        `${"🚀🚀🚀 翻译: ".green.bold}${querystring.unescape(res.data)}`
+      );
+      console.log(`\n===============================================`.rainbow);
     });
 }
