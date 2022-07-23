@@ -5,6 +5,7 @@
   "main": "index.js",
   "bin": {
     "ding": "./bin/translate.js",
+    "preinstall": "npx npm-limit yarn",
     "dd": "./bin/deepl-translate.js"
   },
   "scripts": {
