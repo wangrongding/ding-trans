@@ -2,6 +2,7 @@
 require("colors");
 const say = require("say");
 const querystring = require("querystring");
+const http = require("http");
 const argv = require("yargs").argv;
 // 对驼峰的连续单词进行分割后转义
 let queryStr = encodeURI(
@@ -63,19 +64,21 @@ ${"机器翻译: ".yellow.bold}${machineTrans}
 `;
   console.log(template);
 }
+// 获取请求的参数
+function getOptions(queryStr) {
+  // 用于请求的选项
+  // let options = {
+  //   host: "fanyi.youdao.com",
+  //   port: "80",
+  //   path:
+  //     "/openapi.do?keyfrom=translation-tool&key=1730699468&type=data&doctype=json&version=1.1&q=" +
+  //     queryStr,
+  // };
+  let options = `http://aidemo.youdao.com/trans?q=${queryStr}&&from=Auto&&to=Auto`;
+  return options
+}
 //发送请求
-function sendInfo(query) {
-  //发送翻译请求
-  let http = require("http");
-  // 1.用于请求的选项
-  let options = {
-    host: "fanyi.youdao.com",
-    port: "80",
-    path:
-      "/openapi.do?keyfrom=translation-tool&key=1730699468&type=data&doctype=json&version=1.1&q=" +
-      query,
-  };
-  // let options = ` http://aidemo.youdao.com/trans?q=${query}&&from=Auto&&to=Auto`;
+function sendInfo(queryStr) {
   // 处理响应的回调函数
   let callback = function (response) {
     // 不断更新数据
@@ -87,6 +90,6 @@ function sendInfo(query) {
     });
   };
   // 向服务端发送请求
-  let req = http.request(options, callback);
+  let req = http.request(getOptions(queryStr), callback);
   req.end();
 }

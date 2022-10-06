@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 require("colors");
 const { axios } = require("./request");
-const say = require("say");
 const querystring = require("querystring");
 const argv = require("yargs").argv;
 // 对驼峰的连续单词进行分割后转义
@@ -24,20 +23,16 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
   console.log("请在'ding'命令后输入单词或断句!");
   console.log("word or sentence required...");
 } else {
-  //播放
-  if (argv.say == true || argv.S == true) {
-    console.log("播放中...".rainbow);
-    say.speak(querystring.unescape(queryStr));
-    return;
-  }
   //查词
   sendInfo(querystring.unescape(queryStr));
 }
 //发送请求
 function sendInfo(queryStr) {
+  const targetLang = escape(queryStr).indexOf("%u") < 0 ? "ZH" : "EN";
+  // console.log("🚀🚀🚀 / queryStr", queryStr, escape(queryStr), targetLang);
   axios
     .post("http://47.95.239.198:9521/translate", {
-      data: { text: queryStr, source_lang: "auto", target_lang: "ZH" },
+      data: { text: queryStr, source_lang: "auto", target_lang: targetLang },
     })
     .then((res) => {
       console.log(`=============================================== \n`.rainbow);
