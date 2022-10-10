@@ -1,14 +1,18 @@
-# ding-trans (ding 翻译)
+# ding-trans
 
-## 安装
+一个在终端上翻译的工具，支持有道翻译和 DeepL 翻译。
+
+方便自己在编码、查看源码是直接在 VsCode 集成终端上翻译。减少来回切换窗口的操作。提升效率，时间为王！
+
+## 安装-Install
 
 ```
 npm i ding-trans -g
 ```
 
-### 使用>
+## 使用-Usage
 
-#### new! 新增 deepl 翻译（英译中，吊打其他翻译，基于深度学习）
+### 新增 deepl（中英互译，吊打其他翻译，基于深度学习）
 
 ```sh
 dd <content>
@@ -16,48 +20,50 @@ dd <content>
 dd hello world
 ```
 
+翻译专业词汇的表现：  
 ![](https://assets.fedtop.com/picbed/20220706142743.png)
+
+内容中如果标点符号比较多的时候，可以使用 引号 包裹起来，这样可以提高翻译的准确率。
 
 ![](https://assets.fedtop.com/picbed/20220706143047.png)
 
-##### 查单词:
+### 支持单词与长句的发音:
+
+```shell
+dd hello -S
+dd hello --say
+dd better late than never -S
+dd better late than never --say
+```
+
+![](https://assets.fedtop.com/picbed/202210101726508.png)
+
+### 查单词:
 
 ```shell
 ding hello
 ```
 
-![汪荣顶.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqouh4l13sj20g6073749.jpg)
+![](https://assets.fedtop.com/picbed/202210101723582.png)
 
-##### 查长短句:
+### 查长短句:
 
 ```shell
 ding better late than never
 ```
 
-![汪荣顶.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqqfqpfhnjj20ej05fmx4.jpg)
+![](https://assets.fedtop.com/picbed/202210101724090.png)
 
-##### 中译英:
+### 中译英:
 
 ```shell
 ding JavaScript是最好的语言!
 ```
 
-![汪荣顶.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1gqr00954u7j20cm033q2s.jpg)
+![](https://assets.fedtop.com/picbed/202210101724481.png)
 
-##### 帅气的是!!!也支持单词与长句的发音:
+### 更多提效的工具?
 
-```shell
-ding hello -S
+More tools to improve efficiency？
 
-ding hello --say
-
-ding better late than never -S
-
-ding better late than never --say
-```
-
-![1623305242.jpg](http://ww1.sinaimg.cn/large/75314ac9ly1grd50m5a0cj20ea058mx4.jpg)
-
-### 想看更多好玩的东西?
-
-我的官方网站->See [荣顶:https://www.fedtop.com](https://www.fedtop.com).
+follow me on [GitHub](https://github.com/wangrongding)
