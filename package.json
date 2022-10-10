@@ -1,12 +1,11 @@
 {
   "name": "ding-trans",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "a translation cli",
   "main": "index.js",
   "bin": {
-    "ding": "./bin/translate.js",
-    "preinstall": "npx npm-limit yarn",
-    "dd": "./bin/deepl-translate.js"
+    "ding": "./bin/cli.js",
+    "dd": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
