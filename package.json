@@ -17,7 +17,7 @@
   "author": "wangrongding <wangrongding@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "colors": "^1.4.0",
     "say": "^0.16.0",
     "yargs": "^17.0.1"
