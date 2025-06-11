@@ -36,3 +36,5 @@ if (!queryStr || argv.help == true || argv.H == true || argv.h == true) {
     deepl(queryStr)
   }
 }
+
+// https://api.dictionaryapi.dev/api/v2/entries/en/hello
